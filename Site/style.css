@@ -16,8 +16,12 @@ body {
     font-family: 'Dosis', sans-serif;
 }
 
+.background-inicio{
+    background-color: #F2F2F2;
+    background-size: cover;
+}
+
 header {
-    z-index: 30;
     position: fixed;
     width: 100%;
     padding-bottom: 0;
@@ -121,3 +125,19 @@ nav a:hover {
 .btn-cadastro:hover {
     background-color: #9A5665;
 }
+
+.principal-inicio{
+    display: flex;
+    align-items: center;
+    padding: 140px 100px 50px 100px;
+}
+
+.banner-conteudo{
+    display: flex;
+    flex-direction: column;
+    padding: ;
+    background-color: #FFFF;
+    height: 200px;
+    width: 80%;
+}
+
