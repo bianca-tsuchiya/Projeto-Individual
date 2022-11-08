@@ -129,15 +129,17 @@ nav a:hover {
 .principal-inicio{
     display: flex;
     align-items: center;
-    padding: 140px 100px 50px 100px;
+    padding: 140px 110px 50px 110px;
 }
 
 .banner-conteudo{
     display: flex;
     flex-direction: column;
-    padding: ;
+    padding: 50px;
     background-color: #FFFF;
     height: 200px;
     width: 80%;
 }
+
+.
 
