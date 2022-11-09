@@ -17,13 +17,6 @@ body {
 }
 
 
-/* Background do Início */
-.background-inicio{
-    background-color: #E9E9E9;
-    background-size: cover;
-}
-
-
 /* header -> nav-bar */
 header {
     position: fixed;
@@ -58,7 +51,6 @@ nav {
     margin: 0 10%;
     width: 70%;
     font-size: 20px;
-    font-weight: 500;
 }
 
 nav ul {
@@ -74,6 +66,7 @@ nav ul li {
 nav a {
     text-decoration: none;
     color: #303030;
+    font-weight: 500;
 }
 
 nav a:hover {
@@ -86,7 +79,7 @@ nav a:hover {
     flex-direction: row;
     width: 10%;
     align-items: center;
-    margin-right: 5px;
+    margin-right: 5vh;
     cursor: pointer;
 }
 
@@ -131,6 +124,11 @@ nav a:hover {
 
 
 /* Inicio */
+.background-inicio{
+    background-color: #E9E9E9;
+    background-size: cover;
+}
+
 .principal-inicio{
     display: flex;
     align-items: center;
@@ -143,7 +141,7 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 4vh 9vh;
+    padding: 4vh 13vh;
     background-color: #FFFF;
     height: 52vh;
     width: 50%;
@@ -191,3 +189,97 @@ nav a:hover {
 
 
 /* Descubra */
+.descubra{
+    display: flex;
+    padding: 4% 0 5% 0;
+}
+
+.texto_descubra{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0.5vh 8vh;
+}
+
+.imgs-descubra{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 65%;
+}
+
+.imgs-descubra img{
+    max-width: 38vh;
+    padding: 2vh 0;
+}
+
+.texto_descubra, .titulo{
+    width: 80%;
+    border: 1px solid #cc9fa4;
+    border-radius: 0px 20px 20px 0;
+    background-color: #CC9FA4;
+    color: #303030;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5vh;    
+    margin: 0 5vh 2vh 0;
+    font-weight: 700;
+    margin-bottom: 1.5vh;
+    
+    
+}
+
+.titulo p{
+    margin: 3vh 0;
+    margin-left: 25vh;
+}
+
+.paragrafo1, .paragrafo2, .paragrafo3, .paragrafo4 p{
+   
+    margin: 5vh 8vh 2vh 25vh;
+}
+
+.texto_descubra, .paragrafo1{
+    padding-right: 30vh;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+}
+
+.texto_descubra, .paragrafo2{
+    padding-right: 30vh;
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.texto_descubra, .paragrafo3{
+    padding-right: 30vh;
+    width: 80%;
+    font-size: 20px;
+}
+
+.texto_descubra, .paragrafo4{
+    width: 80%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+}
+
+.btn-cadastre-se {
+    background-color: #9A5665;
+    padding: 6px;
+    width: 25vh;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFFF;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+.btn-cadastre-se:hover {
+    background-color: #CC9FA4;
+}
+
+
