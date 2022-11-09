@@ -239,14 +239,15 @@ nav a:hover {
 }
 
 .texto_descubra, .paragrafo1{
-    padding-right: 30vh;
+    padding-right: 28vh;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
+    font-weight: 500;
 }
 
 .texto_descubra, .paragrafo2{
-    padding-right: 30vh;
+    padding-right: 24vh;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
@@ -254,6 +255,7 @@ nav a:hover {
 
 .texto_descubra, .paragrafo3{
     padding-right: 30vh;
+    padding-bottom: 2vh;
     width: 80%;
     font-size: 20px;
 }
