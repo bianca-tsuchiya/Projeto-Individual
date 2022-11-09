@@ -5,7 +5,7 @@ font-family: 'Dosis', sans-serif;
 font-family: 'Montserrat', sans-serif;
 */
 
-
+/* CSS Geral */
 * {
     margin: 0;
     padding: 0;
@@ -16,11 +16,15 @@ body {
     font-family: 'Dosis', sans-serif;
 }
 
+
+/* Background do Início */
 .background-inicio{
-    background-color: #F2F2F2;
+    background-color: #E9E9E9;
     background-size: cover;
 }
 
+
+/* header -> nav-bar */
 header {
     position: fixed;
     width: 100%;
@@ -57,7 +61,6 @@ nav {
     font-weight: 500;
 }
 
-
 nav ul {
     display: flex;
     justify-content: space-between;
@@ -83,13 +86,13 @@ nav a:hover {
     flex-direction: row;
     width: 10%;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 5px;
     cursor: pointer;
 }
 
 .btn-login {
-    background-color: #F2F2F2;
-    margin-right: 5px;
+    background-color: #E9E9E9;
+    margin-right: 0px;
     display: inline-block;
     padding: 6px;
     width: 80px;
@@ -126,20 +129,65 @@ nav a:hover {
     background-color: #9A5665;
 }
 
+
+/* Inicio */
 .principal-inicio{
     display: flex;
     align-items: center;
-    padding: 140px 110px 50px 110px;
+    justify-content: center;
+    padding: 9.5% 13% 3% 13%;
+    /* padding: 30vh 70vh 40vh 70vh; */
 }
 
 .banner-conteudo{
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    justify-content: center;
+    padding: 4vh 9vh;
     background-color: #FFFF;
-    height: 200px;
-    width: 80%;
+    height: 52vh;
+    width: 50%;
 }
 
-.
+.frase1-banner{
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: small;
+    margin-bottom: 1vh;
+    margin-left: 1vh;
+}
 
+.frase2-banner{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10vh;
+    font-weight: 800;
+    margin-bottom: 1.5vh;
+}
+
+.frase3-banner{
+    font-weight: 500;
+    font-size: 22px;
+    margin-bottom: 4vh;
+}
+
+.btn-confira {
+    background-color: #9A5665;
+    padding: 6px;
+    width: 22vh;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: #FFFF;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+.btn-confira:hover {
+    background-color: #CC9FA4;
+}
+
+
+/* Descubra */
