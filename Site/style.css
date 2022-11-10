@@ -14,6 +14,7 @@ font-family: 'Montserrat', sans-serif;
 
 body {
     font-family: 'Dosis', sans-serif;
+    color: #141414;
 }
 
 
@@ -218,7 +219,6 @@ nav a:hover {
     border: 1px solid #cc9fa4;
     border-radius: 0px 20px 20px 0;
     background-color: #CC9FA4;
-    color: #303030;
     font-family: 'Montserrat', sans-serif;
     font-size: 5vh;    
     margin: 0 5vh 2vh 0;
