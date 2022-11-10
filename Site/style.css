@@ -49,7 +49,7 @@ header {
 }
 
 nav {
-    margin: 0 10%;
+    margin: 0 5%;
     width: 70%;
     font-size: 20px;
 }
@@ -80,7 +80,8 @@ nav a:hover {
     flex-direction: row;
     width: 10%;
     align-items: center;
-    margin-right: 5vh;
+    margin-left: 10vh;
+    margin-right: 2vh;
     cursor: pointer;
 }
 
