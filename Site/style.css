@@ -191,14 +191,14 @@ nav a:hover {
 /* Descubra */
 .descubra{
     display: flex;
-    padding: 4% 0 5% 0;
+    padding: 2% 0 2% 0;
 }
 
 .texto_descubra{
     display: flex;
     flex-direction: column;
     width: 50%;
-    margin: 0.5vh 8vh;
+    margin: 0 8vh;
 }
 
 .imgs-descubra{
@@ -209,8 +209,8 @@ nav a:hover {
 }
 
 .imgs-descubra img{
-    max-width: 38vh;
-    padding: 2vh 0;
+    max-width: 42vh;
+    padding-bottom: 2vh;
 }
 
 .texto_descubra, .titulo{
@@ -224,8 +224,6 @@ nav a:hover {
     margin: 0 5vh 2vh 0;
     font-weight: 700;
     margin-bottom: 1.5vh;
-    
-    
 }
 
 .titulo p{
@@ -233,43 +231,49 @@ nav a:hover {
     margin-left: 25vh;
 }
 
-.paragrafo1, .paragrafo2, .paragrafo3, .paragrafo4 p{
-   
-    margin: 5vh 8vh 2vh 25vh;
-}
 
 .texto_descubra, .paragrafo1{
+    margin: 5vh 8vh 2vh 25vh;
     padding-right: 28vh;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
+    color: #000000;
 }
 
 .texto_descubra, .paragrafo2{
+    margin: 3vh 8vh 9vh 25vh;
     padding-right: 24vh;
     width: 80%;
     font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
+    text-align: justify;
 }
 
 .texto_descubra, .paragrafo3{
+    margin: 5vh 8vh 2vh 25vh;
     padding-right: 30vh;
-    padding-bottom: 2vh;
     width: 80%;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.texto_descubra, .paragrafo3 b{
+    font-weight: 800;
 }
 
 .texto_descubra, .paragrafo4{
+    padding: 3vh 8vh 3vh 25vh;;
     width: 80%;
+    font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     text-align: end;
-    font-size: 18px;
+    font-size: 16px;
     background-color: #E9E9E9;
     border: 1px solid #E9E9E9;
     border-radius: 0px 20px 20px 0;
-    padding: 1vh 0;
-    margin-bottom: 3vh;
+    margin-bottom: 5vh;
 }
 
 .btn-cadastre-se {
