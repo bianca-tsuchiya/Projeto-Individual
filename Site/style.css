@@ -191,23 +191,23 @@ nav a:hover {
 
 
 /* Descubra */
+/* - Parte1 */
 .descubra{
     display: flex;
-    padding: 2% 0 2% 0;
+    padding: 3% 0 3% 0;
 }
 
-.texto_descubra{
+.texto-descubra{
     display: flex;
     flex-direction: column;
-    width: 50%;
-    margin: 0 8vh;
+    width: 66%;
 }
 
 .imgs-descubra{
     display: flex;
     flex-direction: column;
     text-align: center;
-    width: 65%;
+    width: 34%;
 }
 
 .imgs-descubra img{
@@ -215,58 +215,57 @@ nav a:hover {
     padding-bottom: 2vh;
 }
 
-.texto_descubra, .titulo{
-    width: 80%;
+.titulo-descubra{
+    width: 83%;
     border: 1px solid #cc9fa4;
     border-radius: 0px 20px 20px 0;
     background-color: #CC9FA4;
     font-family: 'Montserrat', sans-serif;
     font-size: 5vh;    
-    margin: 0 5vh 2vh 0;
     font-weight: 700;
-    margin-bottom: 1.5vh;
 }
 
-.titulo p{
+.titulo-descubra p{
     margin: 3vh 0;
     margin-left: 25vh;
 }
 
 
-.texto_descubra, .paragrafo1{
+.paragrafo1{
     margin: 5vh 8vh 2vh 25vh;
-    padding-right: 28vh;
-    width: 80%;
+    padding-right: 30vh;
+    width: 83%;
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 500;
     color: #000000;
+    text-align: justify;
 }
 
-.texto_descubra, .paragrafo2{
-    margin: 3vh 8vh 9vh 25vh;
-    padding-right: 24vh;
-    width: 80%;
+.paragrafo2{
+    margin: 3vh 8vh 5vh 25vh;
+    padding-right: 30vh;
+    width: 83%;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     text-align: justify;
 }
 
-.texto_descubra, .paragrafo3{
+.paragrafo3{
     margin: 5vh 8vh 2vh 25vh;
     padding-right: 30vh;
-    width: 80%;
+    width: 83%;
     font-size: 18px;
     font-weight: 500;
 }
 
-.texto_descubra, .paragrafo3 b{
+.paragrafo3 b{
     font-weight: 800;
 }
 
-.texto_descubra, .paragrafo4{
-    padding: 3vh 8vh 3vh 25vh;;
-    width: 80%;
+.paragrafo4{
+    padding: 3vh 5vh 3vh 25vh;
+    width: 83%;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     text-align: end;
@@ -274,7 +273,7 @@ nav a:hover {
     background-color: #E9E9E9;
     border: 1px solid #E9E9E9;
     border-radius: 0px 20px 20px 0;
-    margin-bottom: 5vh;
+    margin-bottom: 3vh;
 }
 
 .btn-cadastre-se {
@@ -299,4 +298,20 @@ nav a:hover {
     background-color: #CC9FA4;
 }
 
+
+/* Descubra */
+/* - Parte2 */
+.descubra-parte2{
+    background-color: #E9E9E9;
+    background-size: cover;
+}
+
+.texto-descubra-parte2{
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-descubra-parte2{
+
+}
 
