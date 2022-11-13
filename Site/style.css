@@ -125,7 +125,7 @@ nav a:hover {
 }
 
 
-/* Inicio */
+/* Início */
 .background-inicio{
     background-color: #E9E9E9;
     background-size: cover;
@@ -374,4 +374,61 @@ nav a:hover {
 }
 
 
+/*Sobre mim*/
+.sobre-mim{
+    background-color: #FFFF;
+    padding: 3.5% 14%;
+}
 
+.titulo-sobre-mim{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5vh;    
+    font-weight: 700;
+}
+
+.conteudo-sobre-mim{
+    margin: 1.5vh 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.principal-sobre-mim{
+    width: 75%;
+}
+
+.img-sobre-mim{
+    width: 35%;
+}
+
+.nome-sobre-mim{
+    margin-left: 25vh;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 3px;
+    font-size: small;
+    margin-bottom: 1.5vh;
+    color:#9A5665
+}
+
+.linha-sobre-mim{
+    margin-left: 25vh;
+    height: 4px;
+    background-color: #9A5665;
+}
+
+.texto-sobre-mim{
+    display: flex;
+    flex-direction: column;
+    padding: 4vh 13vh;
+    background-color: #E9E9E9;
+    height: 43vh;
+    border-radius: 20px 0 0 20px;
+}
+
+.texto-sobre-mim p{
+    margin-top: 5vh;
+    font-weight: 600;
+    text-align: justify;
+    font-size: large;
+}
