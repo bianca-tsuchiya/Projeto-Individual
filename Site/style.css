@@ -308,10 +308,70 @@ nav a:hover {
 
 .texto-descubra-parte2{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container1-texto-descubra-parte2{
+    width: 45%;
+}
+
+.container2-texto-descubra-parte2{
+    width: 55%;
 }
 
 .titulo-descubra-parte2{
-
+    margin-top: 6vh;
+    width: 83%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5vh;    
+    font-weight: 700;
 }
+
+.linha-descubra-parte2{
+    margin: 0;
+    height: 4px;
+    background-color: #9A5665;
+    margin: 1.5vh 0;
+}
+
+.frase-descubra-parte2{
+    font-size: 3vh;
+    font-weight: 600;
+    color: #9A5665;
+    text-align: end;
+    margin-right: 28vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.cards-descubra-parte2{
+    display: flex;
+    justify-content: center;
+}
+
+.card1, .card2, .card3{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.img-card1, .img-card2, .img-card3{
+    max-width: 290px;
+}
+
+.descricao-card1, .descricao-card2, .descricao-card3{
+    max-width: 290px;
+    background-color: #FFFF;
+    border-radius: 0 0 30px 30px;
+    height: 18vh;
+    padding: 5vh 7vh;
+}
+
+.descricao-card1, .descricao-card2, .descricao-card3 p{
+    text-align: center;
+    font-weight: 600;
+    font-size: 3vh;
+}
+
+
 
