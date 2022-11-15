@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*
+font-family: 'Dosis', sans-serif;
+font-family: 'Montserrat', sans-serif;
+*/
+
+/* CSS Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #141414;
+    overflow: hidden;
+}
+
+main{
+    display: flex;
+}
+
+.login{
+    width: 60%;
+    padding: 8% 10%;
+}
+
+.titulo-form-login{
+    font-size: 5.5vh;
+    font-weight: 800;
+    margin-bottom: 8vh;
+    padding: 0 10%;
+    text-align: center;
+}
+
+.form-login, .usuario-email-login, .senha-login{
+    display: flex;
+    flex-direction: column;
+    padding: 0 6%;
+}
+
+input{
+    border-style: none;
+    background-color: #E9E9E9;
+    border-radius: 10px;
+    width: 100%;
+    height: 5vh;
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.5vh;
+    font-weight: 500;
+    padding: 0 2vh;
+    margin-bottom: 4vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+label{
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.5vh;
+    font-weight: 500;
+    margin-bottom: 1vh;
+}
+
+.btn-entrar{
+    display: flex;
+    margin-top: 5vh;
+    justify-content: center;
+}
+
+button{
+    background-color: #9A5665;
+    border-style: none;
+    padding: 6px;
+    width: 30vh;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    color: #FFFF;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #CC9FA4;
+}
+
+.apelo-cadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Dosis', sans-serif;
+    margin-top: 1.5vh;
+}
+
+.apelo-cadastro a {
+    text-decoration: none;
+    color: #CC9FA4;
+    font-weight: bold;
+}
+
+.apelo-cadastro a:hover {
+    color: #9A5665;
+}
+
+.banner-login{
+    background: linear-gradient(180deg, #9A5665 0%, rgba(154, 86, 101, 0.704225) 33.33%, #F2F2F2 90.62%);
+    background-size: cover;
+    padding: 6vh;
+}
+
+.titulo-banner-login{
+    font-size: 5vh;
+    font-weight: 800;
+    color: #FFFF;
+    margin-bottom: 5vh;
+    margin-left: 8vh;
+}
+
+.texto-banner-login{
+    font-size: 4vh;
+    color:#FFFF;
+    padding: 5% 21%;
+    font-family: 'Dosis', sans-serif;
+}
+
+.img-banner-login{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: end;
+    margin-right: 10vh;
+}
