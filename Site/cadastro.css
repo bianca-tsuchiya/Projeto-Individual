@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/*
+font-family: 'Dosis', sans-serif;
+font-family: 'Montserrat', sans-serif;
+*/
+
+/* CSS Geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #141414;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+}
+
+.banner-cadastro {
+    background-image: url(./assets/banner-cadastro.png);
+    background-size: cover;
+    width: 40%;
+    padding: 9% 10%;
+}
+
+.boas-vindas-cadastro {
+    margin-top: 2vh;
+    font-weight: bold;
+    font-size: 5.5vh;
+    margin-bottom: 5vh;
+}
+
+.texto-realistic {
+    line-height: 11vh;
+    font-size: 9vh;
+    font-weight: 800;
+}
+
+.texto-chamativo-cadastro {
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 3.5px;
+    font-weight: 600;
+    font-size: 22px;
+    text-align: justify;
+    line-height: 4vh;
+}
+
+.banner-cadastro img {
+    margin-top: 30%;
+}
+
+.cadastro {
+    padding: 4.8% 10%;
+    width: 100%;
+}
+
+.titulo-form-cadastro {
+    font-size: 5.5vh;
+    font-weight: 800;
+    margin-bottom: 5vh;
+}
+
+.form-cadastro {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome-sobrenome-cadastro,
+.usuario-dataNasc-cadastro,
+.senha-confirm-cadastro {
+    display: flex;
+    flex-direction: row;
+}
+
+.nome-cadastro,
+.sobrenome-cadastro,
+.usuario-cadastro,
+.data-nasc-cadastro,
+.email-cadastro,
+.senha-cadastro,
+.confirm-senha-cadastro {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome-cadastro,
+.usuario-cadastro,
+.senha-cadastro {
+    width: 45%;
+    margin-right: 5%;
+}
+
+.sobrenome-cadastro,
+.data-nasc-cadastro,
+.confirm-senha-cadastro {
+    width: 45%;
+    margin-left: 5%;
+}
+
+label {
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.5vh;
+    font-weight: 500;
+    margin-bottom: 1vh;
+}
+
+input {
+    border-style: none;
+    background-color: #E9E9E9;
+    border-radius: 10px;
+    width: 100%;
+    height: 5vh;
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.5vh;
+    font-weight: 500;
+    padding: 0 2vh;
+    margin-bottom: 3vh;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#input_dataNasc {
+    color: #666464;
+}
+
+.texto-termos {
+    margin: 2vh 10vh 0 10vh;
+    font-weight: 500;
+    font-size: 1.6vh;
+    line-height: 19px;
+    text-align: center;
+}
+
+.btn-criar-conta {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+button {
+    background-color: #9A5665;
+    border-style: none;
+    padding: 6px;
+    width: 30vh;
+    border-radius: 50px;
+    text-align: center;
+    cursor: pointer;
+    color: #FFFF;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #CC9FA4;
+}
+
+.apelo-conta-existente {
+    display: flex;
+    justify-content: center;
+    font-family: 'Dosis', sans-serif;
+    margin-top: 1.5vh;
+}
+
+.apelo-conta-existente a {
+    padding-left: 1vh;
+    text-decoration: none;
+    color: #CC9FA4;
+    font-weight: bold;
+}
+
+.apelo-conta-existente a:hover {
+    color: #9A5665;
+}
