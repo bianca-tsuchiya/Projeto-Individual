@@ -24,7 +24,6 @@ main {
 }
 
 .banner-cadastro {
-    background-image: url(./assets/banner-cadastro.png);
     background-size: cover;
     width: 40%;
     padding: 9% 10%;
