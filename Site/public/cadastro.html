@@ -59,7 +59,7 @@
                 <p>Ao continuar, você concorda com os Termos de Serviço do Realistic e confirma que leu a Política de Privacidade.</p>
             </div>
             <div class="btn-criar-conta">
-                <button>Criar conta</button>
+                <button onclick="cadastrar()">Criar conta</button>
             </div>
             <div class="apelo-conta-existente">
                 <p>Já tem uma conta?<a href="./login.html">Conecte-se</a></p>
@@ -68,3 +68,83 @@
     </main>
 </body>
 </html>
+
+<script>
+    function cadastrar(){
+
+        const usuario = {
+            nome: input_nome.value,
+            sobrenome: input_sobrenome.value,
+            username: input_usuario.value,
+            dataNasc: input_dataNasc.value,
+            email: input_email.value,
+            senha: input_email.value,
+            confirmSenha: input_confirm_senha.value
+        };
+
+
+        // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        if(usuario.nome == "" || usuario.sobrenome == "" || usuario.username == "" || usuario.dataNasc == "" || usuario.email || usuario.senha == "" || usuario.confirmSenha == ""){
+            console.log("ERRO! Preencher todos os campos.")
+        }
+
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: usuario.nome,
+                sobrenomeServer: usuario.sobrenome,
+                usernameServer: usuario.username,
+                dataNascSever: usuario.dataNasc,
+                emailServer: usuario.email,
+                senhaServer: usuario.senha
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                // cardErro.style.display = "block";
+
+                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, "2000")
+                
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+    }
+    
+    
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

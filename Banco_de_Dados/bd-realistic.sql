@@ -1,8 +1,6 @@
 CREATE DATABASE BD_Realistic;
 USE BD_Realistic;
 
-DROP TABLE Contato;
-
 CREATE TABLE Contato(
 	idContato INT PRIMARY KEY auto_increment,
     nome VARCHAR(45),
