@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="./css/cadastro.css">
     <title>Realistic</title>
 </head>
+
 <body>
     <main>
         <section class="banner-cadastro" style="background-image: url(./assets/banner-cadastro.png);">
@@ -22,41 +24,42 @@
             <div class="form-cadastro">
                 <div class="nome-sobrenome-cadastro">
                     <div class="nome-cadastro">
-                        <label for="input_nome">Nome</label>
-                        <input type="text" id="input_nome">
+                        <label for="inputNome">Nome</label>
+                        <input type="text" id="inputNome">
                     </div>
                     <div class="sobrenome-cadastro">
-                        <label for="input_sobrenome">Sobrenome</label>
-                        <input type="text" id="input_sobrenome">
+                        <label for="inputSobrenome">Sobrenome</label>
+                        <input type="text" id="inputSobrenome">
                     </div>
                 </div>
                 <div class="usuario-dataNasc-cadastro">
                     <div class="usuario-cadastro">
-                        <label for="input_usuario">Nome de usuário</label>
-                        <input type="text" id="input_usuario">
+                        <label for="inputUsuario">Nome de usuário</label>
+                        <input type="text" id="inputUsuario">
                     </div>
                     <div class="data-nasc-cadastro">
-                        <label for="input_dataNasc">Data de nascimento</label>
-                        <input type="date" id="input_dataNasc">
+                        <label for="inputDataNasc">Data de nascimento</label>
+                        <input type="date" id="inputDataNasc">
                     </div>
                 </div>
                 <div class="email-cadastro">
-                    <label for="input_email">E-mail</label>
-                    <input type="email" id="input_email">
+                    <label for="inputEmail">E-mail</label>
+                    <input type="email" id="inputEmail">
                 </div>
                 <div class="senha-confirm-cadastro">
                     <div class="senha-cadastro">
-                        <label for="input_senha">Senha</label>
-                        <input type="password" id="input_senha">
+                        <label for="inputSenha">Senha</label>
+                        <input type="password" id="inputSenha">
                     </div>
                     <div class="confirm-senha-cadastro">
-                        <label for="input_confirm_senha">Confirmação de senha</label>
-                        <input type="password" id="input_confirm_senha">
+                        <label for="inputConfirmSenha">Confirmação de senha</label>
+                        <input type="password" id="inputConfirmSenha">
                     </div>
                 </div>
             </div>
             <div class="texto-termos">
-                <p>Ao continuar, você concorda com os Termos de Serviço do Realistic e confirma que leu a Política de Privacidade.</p>
+                <p>Ao continuar, você concorda com os Termos de Serviço do Realistic e confirma que leu a Política de
+                    Privacidade.</p>
             </div>
             <div class="btn-criar-conta">
                 <button onclick="cadastrar()">Criar conta</button>
@@ -67,20 +70,39 @@
         </section>
     </main>
 </body>
+
 </html>
 
 <script>
-    function cadastrar(){
+
+    // function validarNomeSobrenome() {
+    //     const nomeValido = /^[a-zA-Z]+ [a-zA-Z]+$/; // REGEX - Regular Expression
+
+    //     const nome = inputNome.value;
+    //     const sobrenome = inputSobrenome.value;
+
+    //     // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
+
+    //     if (!nomeValido.test(nome) || !nomeValido.test(sobrenome)) {
+    //         alert('Invalid name given.');
+    //     } else {
+    //         alert('Valid name given.');
+    //     }
+    // }
+
+    function cadastrar() {
 
         const usuario = {
-            nome: input_nome.value,
-            sobrenome: input_sobrenome.value,
-            username: input_usuario.value,
-            dataNasc: input_dataNasc.value,
-            email: input_email.value,
-            senha: input_email.value,
-            confirmSenha: input_confirm_senha.value
+            nome: inputNome.value,
+            sobrenome: inputSobrenome.value,
+            username: inputUsuario.value,
+            dataNasc: inputDataNasc.value,
+            email: inputEmail.value,
+            senha: inputSenha.value,
+            confirmSenha: inputConfirmSenha.value
         };
+
+        console.log(typeof usuario.dataNasc);
 
 
         // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
@@ -94,57 +116,145 @@
         //     setInterval(sumirMensagem, 5000)
         // }
 
-        if(usuario.nome == "" || usuario.sobrenome == "" || usuario.username == "" || usuario.dataNasc == "" || usuario.email || usuario.senha == "" || usuario.confirmSenha == ""){
+        if (usuario.nome == "" || usuario.sobrenome == "" || usuario.username == "" || usuario.dataNasc == "" || usuario.email == "" || usuario.senha == "" || usuario.confirmSenha == "") {
             console.log("ERRO! Preencher todos os campos.")
+        }
+        else {
+
+            // VALIDAÇÃO DE NOME E SOBRENOME
+            var nomeInvalido = false;
+            const nomeValido = /^[A-Z]{1}[a-z]+((\s)?([A-Za-z])+)*$/
+
+            /*
+            REGEX - Regular Expression
+            RegEx - notação que faz verificações em textos com 3 principais aplicações (buscas por padrões, validações em textos e substituições).
+            ? - to optional character
+            * - Repite zero or more
+            /^[A-Z]{1}[a-z]+$/; 
+            */
+
+            if (!nomeValido.test(usuario.nome) || !nomeValido.test(usuario.sobrenome)) {
+                alert('Invalid name given.');
+                nomeInvalido = true;
+            }
+            else {
+                alert('Valid name given.');
+            }
+
+
+            //------------------------------------------
+
+            //VALIDAÇÃO DE DATA DE NASCIMENTO
+
+            var dataNascInvalido = false;
+            var now = new Date(); //generate a new Date object containing the current date and time.
+
+            const anoInputDataNasc = Number((usuario.dataNasc).slice(0, 4)); //Consersão de String para Number 
+            // The String slice() method extracts the part of a string between the start and end indexes, which are specified by the first and second arguments respectively. 
+
+            var idade = now.getFullYear() - anoInputDataNasc;
+            //O método getFullYear() retorna o ano da data especificada de acordo com a hora local.
+
+            if (idade >= 0 && idade < 13) {
+                alert("Você precisa ter pelo menos 13 anos de idade para continuar.");
+            }
+            else if (idade < 0 || idade > 120) {
+                dataNascInvalido = true;
+                alert("Digite uma data de nascimento válida.");
+            }
+
+            //---------------------------------------------
+
+            //VALIDAÇÃO DE EMAIL
+            var emailInvalido = false;
+            const emailValido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            //\. - combinar com .
+            //?: - noncapture
+
+            if (!emailValido.test(usuario.email)) {
+                emailInvalido == true;
+                console.log("invalid email")
+            }
+
+            // if(usuario.email[0] == "@" || usuario.email[0] == "." || usuario.email[0] == "!" || usuario.email == []){
+            // }
+
+            //---------------------------------------------
+
+            //VALIDAÇÃO DE SENHA
+            var senhaInvalida = false;
+            
+            if(usuario.senha.length < 8){
+                senhaInvalida == true
+                alert("Senha muito curta")
+            }
         }
 
 
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: usuario.nome,
-                sobrenomeServer: usuario.sobrenome,
-                usernameServer: usuario.username,
-                dataNascSever: usuario.dataNasc,
-                emailServer: usuario.email,
-                senhaServer: usuario.senha
-            })
-        }).then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+        // else {
 
-            if (resposta.ok) {
-                // cardErro.style.display = "block";
+        //     var nomeValido = /^[a-zA-Z]+ [a-zA-Z]+$/; // REGEX - Regular Expression
 
-                // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+        //     // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
 
-                console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+        //     if (!nomeValido.test(usuario.nome) || !nomeValido.test(usuario.sobrenome)) {
+        //         alert('Invalid name given.');
+        //     } else {
+        //         alert('Valid name given.');
+        //     }
 
-                setTimeout(() => {
-                    window.location = "login.html";
-                }, "2000")
-                
-                limparFormulario();
-                finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar realizar o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-        });
 
-        return false;
+        // }
+
+
+        //     fetch("/usuarios/cadastrar", {
+        //         method: "POST",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             // crie um atributo que recebe o valor recuperado aqui
+        //             // Agora vá para o arquivo routes/usuario.js
+        //             nomeServer: usuario.nome,
+        //             sobrenomeServer: usuario.sobrenome,
+        //             usernameServer: usuario.username,
+        //             dataNascSever: usuario.dataNasc,
+        //             emailServer: usuario.email,
+        //             senhaServer: usuario.senha
+        //         })
+        //     }).then(function (resposta) {
+
+        //         console.log("resposta: ", resposta);
+
+        //         if (resposta.ok) {
+        //             // cardErro.style.display = "block";
+
+        //             // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+        //             console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+        //             setTimeout(() => {
+        //                 window.location = "login.html";
+        //             }, "2000")
+
+        //             limparFormulario();
+        //             finalizarAguardar();
+        //         } else {
+        //             throw ("Houve um erro ao tentar realizar o cadastro!");
+        //         }
+        //     }).catch(function (resposta) {
+        //         console.log(`#ERRO: ${resposta}`);
+        //         finalizarAguardar();
+        //     });
+
+        //     return false;
+        // }
+
+
+        // function sumirMensagem() {
+        //     cardErro.style.display = "none"
+        // }
     }
-    
-    
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
 
 </script>
