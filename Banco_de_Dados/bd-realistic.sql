@@ -1,6 +1,8 @@
 CREATE DATABASE BD_Realistic;
 USE BD_Realistic;
 
+DROP DATABASE BD_Realistic;
+
 CREATE TABLE Contato(
 	idContato INT PRIMARY KEY auto_increment,
     nome VARCHAR(45),
@@ -19,3 +21,8 @@ CREATE TABLE Usuario(
     email VARCHAR(45),
     senha VARCHAR(20)
 );
+
+SELECT * FROM Usuario; 
+
+INSERT INTO Usuario (nome, sobrenome, username, data_nasc, email, senha) VALUES
+();
