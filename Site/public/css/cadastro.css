@@ -178,6 +178,8 @@ button:hover {
     color: #9A5665;
 }
 
+
+/* erro validação */
 .alerta-erro-validacao{
     margin-top: 1vh;
     font-family: 'Dosis', sans-serif;
@@ -192,3 +194,43 @@ button:hover {
     align-items: baseline;
     gap: 10px;
 }
+
+
+/* erro */
+.alerta_erro{
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .card_erro {
+    display: none;
+    background-color: #CC9FA4;
+    color: #141414;
+    width: 100%;
+    border-radius: 4px;
+    border-left: #9A5665 10px solid;
+    padding: 10px;
+  }
+  
+  .card_erro #mensagem_erro{
+    font-weight: 500;
+    font-size: 2.3vh;
+    font-family: 'Dosis', sans-serif;
+  }
+
+
+/*cadastro realizado com sucesso*/
+.card_sucesso {
+    display: none;
+    background-color: #CAF4DB;
+    color: black;
+    width: 100%;
+    border-radius: 4px;
+    border-left: #57D45B 10px solid;
+    padding: 10px;
+  }
+  
+  .card_sucesso #mensagem_sucesso{
+    font-weight: 500;
+    font-size: 2vh;
+  }

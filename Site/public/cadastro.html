@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/icone_logo_realistic.png" type="image/x-icon">
+    <script src="./js/funcoes.js"></script>
     <link rel="stylesheet" href="./css/cadastro.css">
     <title>Realistic</title>
 </head>
@@ -20,6 +21,16 @@
         <section class="cadastro">
             <div class="titulo-form-cadastro">
                 <p>Crie sua conta agora</p>
+            </div>
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="alerta_sucesso">
+                <div class="card_sucesso" id="cardSucesso">
+                    <span id="mensagem_sucesso"></span>
+                </div>
             </div>
             <div class="form-cadastro">
                 <div class="nome-sobrenome-cadastro">
@@ -83,6 +94,9 @@
             <div class="btn-criar-conta">
                 <button onclick="cadastrar()">Criar conta</button>
             </div>
+            <!-- <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif">
+            </div> -->
             <div class="apelo-conta-existente">
                 <p>Já tem uma conta?<a href="./login.html">Conecte-se</a></p>
             </div>
@@ -121,9 +135,6 @@
             confirmSenha: inputConfirmSenha.value
         };
 
-        console.log(typeof usuario.dataNasc);
-
-
         // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
         //     cardErro.style.display = "block"
         //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
@@ -136,7 +147,8 @@
         // }
 
         if (usuario.nome == "" || usuario.sobrenome == "" || usuario.username == "" || usuario.dataNasc == "" || usuario.email == "" || usuario.senha == "" || usuario.confirmSenha == "") {
-            console.log("ERRO! Preencher todos os campos.")
+            cardErro.style.display = "flex"
+            mensagem_erro.innerHTML = "ERRO! Preencha todos os campos adequadamente.";
         }
         else {
 
@@ -154,11 +166,16 @@
             */
 
             if (!nomeValido.test(usuario.nome)) {
+                // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
+
                 nomeInvalido = true;
                 spanNomeInvalido.innerHTML = `
                 <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
                 Digite um nome válido.
                 `;
+            }
+            else if (nomeInvalido == false) {
+                spanNomeInvalido.innerHTML = "";
             }
 
             if (!nomeValido.test(usuario.sobrenome)) {
@@ -168,7 +185,9 @@
                 Digite um sobrenome válido.
                 `;
             }
-
+            else if (sobrenomeInvalido == false) {
+                spanSobrenomeInvalido.innerHTML = "";
+            }
 
 
             //------------------------------------------
@@ -198,6 +217,9 @@
                 Digite uma data de nascimento válida.
                 `
             }
+            else if (dataNascInvalido == false) {
+                spanDataNascInvalido.innerHTML = "";
+            }
 
             //---------------------------------------------
 
@@ -210,12 +232,14 @@
             //?: - noncapture
 
             if (!emailValido.test(usuario.email)) {
-                emailInvalido == true;
-                console.log("invalid email")
+                emailInvalido = true;
                 spanEmailInvalido.innerHTML = `
                 <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
                 Digite um endereço de e-mail válido.
-                `
+                `;
+            }
+            else if (emailInvalido == false) {
+                spanEmailInvalido.innerHTML = "";
             }
 
             // if(usuario.email[0] != /^[A-Za-z0-9]/ || usuario.email.charAt(usuario.email.length-1) != /^[A-Za-z0-9]/)
@@ -235,37 +259,71 @@
             var confirmSenhaInvalido = false;
 
             if (usuario.senha.length < 8 || usuario.senha.search(/[a-z]/) == -1 || usuario.senha.search(/[A-Z]/) == -1 || usuario.senha.search(/[0-9]/) == -1 || usuario.senha.search(/[@.!#$%&'*+/=?^_`{|}~-]/) == -1) {
-                senhaInvalida == true
+
+                senhaInvalida = true;
                 spanSenhaInvalida.innerHTML = `
                 <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
                 Senha inválida! Digite uma senha de pelo menos 8 caracteres. Sua senha deve conter letra maiúscula, letra minúscula, números e caracteres especiais.
-                `
+                `;
             }
-            else if(usuario.confirmSenha != usuario.senha){
+            else if (usuario.confirmSenha != usuario.senha) {
                 confirmSenhaInvalido = true;
                 spanConfirmSenhaInvalido.innerHTML = `
                 <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
                 Senha incorreta! Digite a mesma senha digitada anteriormente.
-                `
+                `;
+            }
+            else if (senhaInvalida == false) {
+                spanSenhaInvalida.innerHTML = "";
+            }
+            else if (confirmSenhaInvalido == false) {
+                spanConfirmSenhaInvalido.innerHTML = "";
             }
         }
 
+        
+        //cadastrar
 
+        if (nomeInvalido == false && sobrenomeInvalido == false && dataNascInvalido == false && emailInvalido == false && senhaInvalida == false && confirmSenhaInvalido == false) {
 
-        // else {
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    nomeServer: usuario.nome,
+                    sobrenomeServer: usuario.sobrenome,
+                    usernameServer: usuario.username,
+                    dataNascServer: usuario.dataNasc,
+                    emailServer: usuario.email,
+                    senhaServer: usuario.senha
+                })
+            }).then(function (resposta) {
 
-        //     var nomeValido = /^[a-zA-Z]+ [a-zA-Z]+$/; // REGEX - Regular Expression
+                console.log("resposta: ", resposta);
 
-        //     // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
+                if (resposta.ok) {
 
-        //     if (!nomeValido.test(usuario.nome) || !nomeValido.test(usuario.sobrenome)) {
-        //         alert('Invalid name given.');
-        //     } else {
-        //         alert('Valid name given.');
-        //     }
+                    cardSucesso.style.display = "flex";
+                    mensagem_sucesso.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, "2000")
 
-        // }
+                } else {
+                    throw ("Houve um erro ao tentar realizar o cadastro!");
+                }
+            }).catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+            return false;
+
+        }
 
 
         //     fetch("/usuarios/cadastrar", {
