@@ -25,11 +25,18 @@
                 <div class="nome-sobrenome-cadastro">
                     <div class="nome-cadastro">
                         <label for="inputNome">Nome</label>
+                        <!-- <img src="./assets/alerta-atencao-erros-inputs.png" alt=""> -->
                         <input type="text" id="inputNome">
+                        <div class="input-alerta">
+                            <span class="alerta-erro-validacao" id="spanNomeInvalido"></span>
+                        </div>
                     </div>
                     <div class="sobrenome-cadastro">
                         <label for="inputSobrenome">Sobrenome</label>
                         <input type="text" id="inputSobrenome">
+                        <div class="input-alerta">
+                            <span class="alerta-erro-validacao" id="spanSobrenomeInvalido"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="usuario-dataNasc-cadastro">
@@ -40,20 +47,32 @@
                     <div class="data-nasc-cadastro">
                         <label for="inputDataNasc">Data de nascimento</label>
                         <input type="date" id="inputDataNasc">
+                        <div class="input-alerta">
+                            <span class="alerta-erro-validacao" id="spanDataNascInvalido"></span>
+                        </div>
                     </div>
                 </div>
                 <div class="email-cadastro">
                     <label for="inputEmail">E-mail</label>
                     <input type="email" id="inputEmail">
+                    <div class="input-alerta">
+                        <span class="alerta-erro-validacao" id="spanEmailInvalido"></span>
+                    </div>
                 </div>
                 <div class="senha-confirm-cadastro">
                     <div class="senha-cadastro">
                         <label for="inputSenha">Senha</label>
                         <input type="password" id="inputSenha">
+                        <div class="input-alerta">
+                            <span class="alerta-erro-validacao" id="spanSenhaInvalida"></span>
+                        </div>
                     </div>
                     <div class="confirm-senha-cadastro">
                         <label for="inputConfirmSenha">Confirmação de senha</label>
                         <input type="password" id="inputConfirmSenha">
+                        <div class="input-alerta">
+                            <span class="alerta-erro-validacao" id="spanConfirmSenhaInvalido"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -123,6 +142,7 @@
 
             // VALIDAÇÃO DE NOME E SOBRENOME
             var nomeInvalido = false;
+            var sobrenomeInvalido = false;
             const nomeValido = /^[A-Z]{1}[a-z]+((\s)?([A-Za-z])+)*$/
 
             /*
@@ -133,13 +153,22 @@
             /^[A-Z]{1}[a-z]+$/; 
             */
 
-            if (!nomeValido.test(usuario.nome) || !nomeValido.test(usuario.sobrenome)) {
-                alert('Invalid name given.');
+            if (!nomeValido.test(usuario.nome)) {
                 nomeInvalido = true;
+                spanNomeInvalido.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Digite um nome válido.
+                `;
             }
-            else {
-                alert('Valid name given.');
+
+            if (!nomeValido.test(usuario.sobrenome)) {
+                sobrenomeInvalido = true;
+                spanSobrenomeInvalido.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Digite um sobrenome válido.
+                `;
             }
+
 
 
             //------------------------------------------
@@ -156,37 +185,68 @@
             //O método getFullYear() retorna o ano da data especificada de acordo com a hora local.
 
             if (idade >= 0 && idade < 13) {
-                alert("Você precisa ter pelo menos 13 anos de idade para continuar.");
+                dataNascInvalido = true;
+                spanDataNascInvalido.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Você precisa ter pelo menos 13 anos idade.
+                `
             }
             else if (idade < 0 || idade > 120) {
                 dataNascInvalido = true;
-                alert("Digite uma data de nascimento válida.");
+                spanDataNascInvalido.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Digite uma data de nascimento válida.
+                `
             }
 
             //---------------------------------------------
 
             //VALIDAÇÃO DE EMAIL
             var emailInvalido = false;
-            const emailValido = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            const emailValido = /^[A-Za-z0-9]{1}[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*/
+
+            // /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
             //\. - combinar com .
             //?: - noncapture
 
             if (!emailValido.test(usuario.email)) {
                 emailInvalido == true;
                 console.log("invalid email")
+                spanEmailInvalido.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Digite um endereço de e-mail válido.
+                `
             }
+
+            // if(usuario.email[0] != /^[A-Za-z0-9]/ || usuario.email.charAt(usuario.email.length-1) != /^[A-Za-z0-9]/)
+            // {
+            //     console.log("O primeiro caractere do nome do usuário deve ser uma letra do tipo ascii (a-z) ou um número (0-9)")
+            // }
 
             // if(usuario.email[0] == "@" || usuario.email[0] == "." || usuario.email[0] == "!" || usuario.email == []){
             // }
 
+            // var listaCaracteresEspeciais = ["@", "!", "#", "$", "%", "*", "(", ")", "_", "-", "+", "/", "|", "\\", "`", "{", "}", "[", "]", ".", "^", "~", "'", "=", ":", ",", ";", ">", "" ]
+
             //---------------------------------------------
 
-            //VALIDAÇÃO DE SENHA
+            //VALIDAÇÃO DE SENHA E CONFIRMAÇÃO DE SENHA
             var senhaInvalida = false;
-            
-            if(usuario.senha.length < 8){
+            var confirmSenhaInvalido = false;
+
+            if (usuario.senha.length < 8 || usuario.senha.search(/[a-z]/) == -1 || usuario.senha.search(/[A-Z]/) == -1 || usuario.senha.search(/[0-9]/) == -1 || usuario.senha.search(/[@.!#$%&'*+/=?^_`{|}~-]/) == -1) {
                 senhaInvalida == true
-                alert("Senha muito curta")
+                spanSenhaInvalida.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Senha inválida! Digite uma senha de pelo menos 8 caracteres. Sua senha deve conter letra maiúscula, letra minúscula, números e caracteres especiais.
+                `
+            }
+            else if(usuario.confirmSenha != usuario.senha){
+                confirmSenhaInvalido = true;
+                spanConfirmSenhaInvalido.innerHTML = `
+                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+                Senha incorreta! Digite a mesma senha digitada anteriormente.
+                `
             }
         }
 
