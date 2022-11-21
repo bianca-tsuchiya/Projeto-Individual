@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/icone_logo_realistic.png" type="image/x-icon">
+    <script src="./js/funcoes.js"></script>
+    <link rel="stylesheet" href="./css/portal.css">
+    <title>Realistic</title>
+</head>
+
+<body>
+    <header>
+        <div class="header-portal">
+            <div class="logo-realistic">
+                <img src="./assets/logo_realistic.png" alt="">
+            </div>
+            <div class="barra-pesquisa-portal">
+                <label for="input_pesquisa">
+                    <img src="./assets/lupa-barra-pesquisa-portal.png" alt="" class="img-lupa">
+                </label>
+                <input type="text" class="input-barra-pesquisa" id="input_pesquisa">
+            </div>
+            <div class="btn-config-sair">
+                <a href="#" class="btn-config">Configurações</a>
+                <a href="#" class="btn-sair">Sair</a>
+            </div>
+        </div>
+        <div class="linha-header"></div>
+    </header>
+    <main>
+        <nav>
+            <ul>
+                <li><a href="#" class="agora">Explore</a></li>
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Inspiração</a></li>
+                <li><a href="#">Aprenda</a></li>
+            </ul>
+        </nav>
+        <div class="titulo-portal-explore">
+            <p class="ola">Olá, <span id="b_usuario_nome">*nome*</span> <span id="b_usuario_sobrenome">*sobrenome*</span>!</p>
+            <p class="titulo-explore">Explore o mundo dos desenhos realistas</p>
+        </div>
+        <div class="mural-desenhos-explorar">
+            <img src="#caminho" alt="">
+            <div class="curtidas-visualizações">
+                <!-- corações -->
+                <!-- vizualizações -->
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>
+
+<script>
+    b_usuario_nome.innerHTML = sessionStorage.NOME_USUARIO;
+    b_usuario_sobrenome.innerHTML = sessionStorage.SOBRENOME_USUARIO;
+
+
+</script>

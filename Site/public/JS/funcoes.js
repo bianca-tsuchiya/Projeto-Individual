@@ -1,15 +1,20 @@
-// carregamento (loading)
-// function aguardar() {
-//     var divAguardar = document.getElementById("div_aguardar");
-//     divAguardar.style.display = "flex";
-// }
+// // sessão
+// function validarSessao() {
+//     // aguardar();
 
-// function finalizarAguardar(texto) {
-//     var divAguardar = document.getElementById("div_aguardar");
-//     divAguardar.style.display = "none";
+//     var nome = sessionStorage.NOME_USUARIO;
+//     var sobrenome = sessionStorage.SOBRENOME_USUARIO;
 
-//     var divErrosLogin = document.getElementById("div_erros_login");
-//     if (texto) {
-//         divErrosLogin.innerHTML = texto;
+//     var b_usuario_nome = document.getElementById("b_usuario_nome");
+//     var b_usuario_sobrenome = document.getElementById("b_usuario_sobrenome");
+
+//     if (nome != null && sobrenome != null) {
+//         // window.alert(`Seja bem-vindo, ${nome}!`);
+//         b_usuario_nome.innerHTML = nome;
+//         b_usuario_sobrenome.innerHTML = sobrenome;
+
+//         // finalizarAguardar();
+//     } else {
+//         window.location = "../login.html";
 //     }
 // }

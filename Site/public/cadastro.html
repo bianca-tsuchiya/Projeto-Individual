@@ -38,16 +38,16 @@
                         <label for="inputNome">Nome</label>
                         <!-- <img src="./assets/alerta-atencao-erros-inputs.png" alt=""> -->
                         <input type="text" id="inputNome" placeholder="Digite seu nome">
-                        <div class="input-alerta">
+                        <!-- <div class="input-alerta">
                             <span class="alerta-erro-validacao" id="spanNomeInvalido"></span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="sobrenome-cadastro">
                         <label for="inputSobrenome">Sobrenome</label>
                         <input type="text" id="inputSobrenome" placeholder="Digite seu sobrenome">
-                        <div class="input-alerta">
+                        <!-- <div class="input-alerta">
                             <span class="alerta-erro-validacao" id="spanSobrenomeInvalido"></span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="usuario-dataNasc-cadastro">
@@ -108,26 +108,11 @@
 
 <script>
 
-    // function validarNomeSobrenome() {
-    //     const nomeValido = /^[a-zA-Z]+ [a-zA-Z]+$/; // REGEX - Regular Expression
-
-    //     const nome = inputNome.value;
-    //     const sobrenome = inputSobrenome.value;
-
-    //     // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
-
-    //     if (!nomeValido.test(nome) || !nomeValido.test(sobrenome)) {
-    //         alert('Invalid name given.');
-    //     } else {
-    //         alert('Valid name given.');
-    //     }
-    // }
-
     function cadastrar() {
 
         const usuario = {
-            nome: inputNome.value,
-            sobrenome: inputSobrenome.value,
+            nome: (inputNome.value).charAt(0).toUpperCase() + (inputNome.value).slice(1),
+            sobrenome: (inputSobrenome.value).charAt(0).toUpperCase() + (inputSobrenome.value).slice(1),
             username: inputUsuario.value,
             dataNasc: inputDataNasc.value,
             email: inputEmail.value,
@@ -135,59 +120,48 @@
             confirmSenha: inputConfirmSenha.value
         };
 
-        // if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-        //     cardErro.style.display = "block"
-        //     mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-
-        //     finalizarAguardar();
-        //     return false;
-        // }
-        // else {
-        //     setInterval(sumirMensagem, 5000)
-        // }
-
         if (usuario.nome == "" || usuario.sobrenome == "" || usuario.username == "" || usuario.dataNasc == "" || usuario.email == "" || usuario.senha == "" || usuario.confirmSenha == "") {
             cardErro.style.display = "flex"
             mensagem_erro.innerHTML = "ERRO! Preencha todos os campos adequadamente.";
         }
         else {
 
-            // VALIDAÇÃO DE NOME E SOBRENOME
-            var nomeInvalido = false;
-            var sobrenomeInvalido = false;
-            const nomeValido = /^[A-Z]{1}[a-z]+((\s)?([A-Za-z])+)*$/
+            // // VALIDAÇÃO DE NOME E SOBRENOME
+            // var nomeInvalido = false;
+            // var sobrenomeInvalido = false;
+            // const nomeValido = /^[A-Z]{1}[a-z]+((\s)?([A-Za-z])+)*$/
 
-            /*
-            REGEX - Regular Expression
-            RegEx - notação que faz verificações em textos com 3 principais aplicações (buscas por padrões, validações em textos e substituições).
-            ? - to optional character
-            * - Repite zero or more
-            /^[A-Z]{1}[a-z]+$/; 
-            */
+            // /*
+            // REGEX - Regular Expression
+            // RegEx - notação que faz verificações em textos com 3 principais aplicações (buscas por padrões, validações em textos e substituições).
+            // ? - to optional character
+            // * - Repite zero or more
+            // /^[A-Z]{1}[a-z]+$/; 
+            // */
 
-            if (!nomeValido.test(usuario.nome)) {
-                // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
+            // if (!nomeValido.test(usuario.nome)) {
+            //     // O método test() executa uma busca por uma correspondência entre uma expressão regular e uma string. Retorna true ou false. Use test() sempre que você quiser saber se um padrão está dentro de uma string.
 
-                nomeInvalido = true;
-                spanNomeInvalido.innerHTML = `
-                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
-                Digite um nome válido.
-                `;
-            }
-            else if (nomeInvalido == false) {
-                spanNomeInvalido.innerHTML = "";
-            }
+            //     nomeInvalido = true;
+            //     spanNomeInvalido.innerHTML = `
+            //     <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+            //     Digite um nome válido.
+            //     `;
+            // }
+            // else if (nomeInvalido == false) {
+            //     spanNomeInvalido.innerHTML = "";
+            // }
 
-            if (!nomeValido.test(usuario.sobrenome)) {
-                sobrenomeInvalido = true;
-                spanSobrenomeInvalido.innerHTML = `
-                <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
-                Digite um sobrenome válido.
-                `;
-            }
-            else if (sobrenomeInvalido == false) {
-                spanSobrenomeInvalido.innerHTML = "";
-            }
+            // if (!nomeValido.test(usuario.sobrenome)) {
+            //     sobrenomeInvalido = true;
+            //     spanSobrenomeInvalido.innerHTML = `
+            //     <img src="./assets/alerta-atencao-erros-inputs.png" alt="ícone de alerta"> 
+            //     Digite um sobrenome válido.
+            //     `;
+            // }
+            // else if (sobrenomeInvalido == false) {
+            //     spanSobrenomeInvalido.innerHTML = "";
+            // }
 
 
             //------------------------------------------
@@ -284,7 +258,7 @@
         
         //cadastrar
 
-        if (nomeInvalido == false && sobrenomeInvalido == false && dataNascInvalido == false && emailInvalido == false && senhaInvalida == false && confirmSenhaInvalido == false) {
+        if (dataNascInvalido == false && emailInvalido == false && senhaInvalida == false && confirmSenhaInvalido == false) {
 
             fetch("/usuarios/cadastrar", {
                 method: "POST",
@@ -324,55 +298,6 @@
             return false;
 
         }
-
-
-        //     fetch("/usuarios/cadastrar", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify({
-        //             // crie um atributo que recebe o valor recuperado aqui
-        //             // Agora vá para o arquivo routes/usuario.js
-        //             nomeServer: usuario.nome,
-        //             sobrenomeServer: usuario.sobrenome,
-        //             usernameServer: usuario.username,
-        //             dataNascSever: usuario.dataNasc,
-        //             emailServer: usuario.email,
-        //             senhaServer: usuario.senha
-        //         })
-        //     }).then(function (resposta) {
-
-        //         console.log("resposta: ", resposta);
-
-        //         if (resposta.ok) {
-        //             // cardErro.style.display = "block";
-
-        //             // mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-        //             console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
-        //             setTimeout(() => {
-        //                 window.location = "login.html";
-        //             }, "2000")
-
-        //             limparFormulario();
-        //             finalizarAguardar();
-        //         } else {
-        //             throw ("Houve um erro ao tentar realizar o cadastro!");
-        //         }
-        //     }).catch(function (resposta) {
-        //         console.log(`#ERRO: ${resposta}`);
-        //         finalizarAguardar();
-        //     });
-
-        //     return false;
-        // }
-
-
-        // function sumirMensagem() {
-        //     cardErro.style.display = "none"
-        // }
     }
 
 </script>
