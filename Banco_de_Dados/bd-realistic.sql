@@ -25,4 +25,6 @@ CREATE TABLE Usuario(
 SELECT * FROM Usuario; 
 
 INSERT INTO Usuario (nome, sobrenome, username, data_nasc, email, senha) VALUES
-();
+('Bianca', 'Tsuchiya', 'bihnamie', '2002-09-28', 'bianca.tsuchiya@sptech.school', '1234');
+
+SELECT * FROM Usuario WHERE (username = 'bianca' OR email = 'bianca.tsuchiya@sptech.school') AND senha = '1234';
