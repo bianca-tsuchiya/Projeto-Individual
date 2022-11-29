@@ -91,7 +91,7 @@ header {
     cursor: pointer;
 }
 
-.btn-sair{
+.btn-sair {
     background-color: #CC9FA4;
     padding: 6px;
     width: 100px;
@@ -104,7 +104,7 @@ header {
     text-align: center;
 }
 
-main{
+main {
     padding-top: 5vh;
 }
 
@@ -134,22 +134,22 @@ nav a:hover {
     border-bottom: 4px solid #9A5665;
 }
 
-.agora{
+.agora {
     font-weight: bold;
 }
 
-.titulo-portal-explore{
+.titulo-portal-explore {
     margin-top: 12vh;
 }
 
-.ola{
+.ola {
     font-size: 4vh;
     font-weight: bold;
     text-align: center;
-    color:#9A5665;
+    color: #9A5665;
 }
 
-.titulo-explore{
+.titulo-explore {
     margin-top: 2vh;
     font-size: 3vh;
     font-weight: bold;
@@ -157,5 +157,17 @@ nav a:hover {
     font-weight: 600;
 }
 
+.container-mural-desenhos-explorar {
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+}
 
+.imgs-mural-explorar>img {
+    padding: 1vh;
+    max-width: 250px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
 
+}

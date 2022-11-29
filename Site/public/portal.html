@@ -11,7 +11,7 @@
     <title>Realistic</title>
 </head>
 
-<body>
+<body onload="obterDesenhos()">
     <header>
         <div class="header-portal">
             <div class="logo-realistic">
@@ -40,14 +40,18 @@
             </ul>
         </nav>
         <div class="titulo-portal-explore">
-            <p class="ola">Olá, <span id="b_usuario_nome">*nome*</span> <span id="b_usuario_sobrenome">*sobrenome*</span>!</p>
+            <p class="ola">Olá, <span id="b_usuario_nome">*nome*</span> <span
+                    id="b_usuario_sobrenome">*sobrenome*</span>!</p>
             <p class="titulo-explore">Explore o mundo dos desenhos realistas</p>
         </div>
-        <div class="mural-desenhos-explorar">
-            <img src="#caminho" alt="">
-            <div class="curtidas-visualizações">
+        <div class="container-mural-desenhos-explorar">
+            <div class="mural-desenhos-explorar" id="mural_desenhos_explorar">
+                <!-- <img src="./assets/publicacoesDesenhos/" alt=""> -->
+                <!-- <img src="#caminho" alt="">
+                <div class="curtidas-visualizações"> -->
                 <!-- corações -->
                 <!-- vizualizações -->
+                <!-- </div> -->
             </div>
         </div>
     </main>
@@ -59,6 +63,57 @@
 <script>
     b_usuario_nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_usuario_sobrenome.innerHTML = sessionStorage.SOBRENOME_USUARIO;
+
+    function obterDesenhos() {
+        //aguardar();
+        fetch("/desenho/listarDesenhos").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var mural_explorar = document.getElementById("mural_desenhos_explorar");
+
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+
+                    mural_explorar.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var mural_explorar = document.getElementById("mural_desenhos_explorar");
+
+                    mural_explorar.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        var divContainerDesenho = document.createElement("div")
+                        var spanIMG = document.createElement("span");
+                        
+
+                        spanIMG.innerHTML = `
+                            <img src= "./assets/publicacoesDesenhos/${publicacao.url}" width=250px>
+                        `
+
+                        spanIMG.className = "imgs-mural-explorar";
+
+                        var contador = i + 1;
+                        if (contador % 4 == 0) {
+                            spanIMG.innerHTML += "<br>"
+                        }
+
+                        mural_explorar.appendChild(spanIMG);
+                    }
+                });
+            } else {
+                throw ('Houve um erro!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+    }
 
 
 </script>
