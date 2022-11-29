@@ -158,16 +158,76 @@ nav a:hover {
 }
 
 .container-mural-desenhos-explorar {
+    display: flex;
+    justify-content: center;
+    margin: 7vh 0;
+}
+
+.mural-desenhos-explorar{
+    /* margin-top: 10vh;
+    display: flex;
+    justify-content: center; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+
+    grid-gap: 1vh;
+}
+
+.container-desenho{
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 2vh 1vh;
+}
+
+/* .container-mural-desenhos-explorar {
     margin-top: 10vh;
     display: flex;
     justify-content: center;
-}
+} */
 
-.imgs-mural-explorar>img {
+
+.imgs-mural-explorar>figure>img {
+    -webkit-transform: scale(100%);
+	transform: scale(100%);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
     padding: 1vh;
-    max-width: 250px;
-    width: 250px;
+    max-width: 270px;
+    width: 270px;
     height: 250px;
     object-fit: cover;
+    border-radius: 20px;
+}
 
+.imgs-mural-explorar>figure:hover>img{
+    -webkit-transform: scale(102%);
+	transform: scale(102%);
+    cursor: pointer;
+}
+
+.info-desenho{
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.5vh;
+    font-weight: 500;
+    margin: 0 2vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.info-desenho-curtida{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.img-curtida{
+    cursor: pointer;
+}
+
+.info-desenho-visualizacao{
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }

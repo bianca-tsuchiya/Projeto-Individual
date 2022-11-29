@@ -48,6 +48,7 @@ CREATE TABLE Visualizacao(
 );
 
 SELECT * FROM Desenho;
+SELECT * FROM Usuario;
 
 INSERT INTO Desenho (url, descricao, categoria) VALUES
 ('desenho1_publicacoes.jpg', 'uma flor', 'plantas'),
