@@ -25,10 +25,12 @@ CREATE TABLE Usuario(
 CREATE TABLE Desenho(
 	idDesenho INT PRIMARY KEY auto_increment,
     url VARCHAR(100),
-    nome_artista VARCHAR(45),
+    nome_artista VARCHAR(45) DEFAULT 'Artista Desconhecido',
     descricao VARCHAR(150),
     categoria VARCHAR(45)
 );
+
+DROP TABLE Desenho;
 
 CREATE TABLE Curtida(
 	fkUsuario INT, FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
@@ -37,6 +39,24 @@ CREATE TABLE Curtida(
     dt_hora_curtida DATETIME NOT NULL DEFAULT current_timestamp,
     PRIMARY KEY (fkUsuario, fkDesenho)
 );
+
+INSERT INTO Curtida (fkUsuario, fkDesenho, qtd_curtidas) VALUES
+(1, 1, 1),
+(1, 2, 1),
+(2, 2, 1);
+
+SELECT * FROM Curtida;
+
+
+SELECT c.qtd_curtidas, d.idDesenho, d.url, d.nome_artista, v.qtd_visualizacoes FROM Usuario as u
+JOIN Curtida as c
+ON c.fkUsuario = u.idUsuario RIGHT JOIN Desenho as d
+ON c.fkDesenho = d.idDesenho LEFT JOIN Visualizacao as v
+ON v.fkDesenho = d.idDesenho
+ORDER BY d.idDesenho Desc;
+
+
+-- ORDER BY idDesenho Desc;
 
 CREATE TABLE Visualizacao(
 	idVisualizacao INT auto_increment,
@@ -50,16 +70,16 @@ CREATE TABLE Visualizacao(
 SELECT * FROM Desenho;
 SELECT * FROM Usuario;
 
-INSERT INTO Desenho (url, descricao, categoria) VALUES
-('desenho1_publicacoes.jpg', 'uma flor', 'plantas'),
-('desenho2_publicacoes.jpg', 'um retrato', 'pessoas'),
-('desenho3_publicacoes.jpg', 'um retrato', 'pessoas'),
-('desenho4_publicacoes.jpg', 'um retrato', 'pessoas'),
-('desenho5_publicacoes.jpg', 'uma flor', 'plantas'),
-('desenho6_publicacoes.jpg', 'um retrato', 'pessoas'),
-('desenho7_publicacoes.jpg', 'um retrato', 'pessoas'),
-('desenho8_publicacoes.jpg', 'um retrato', 'pessoas'),
-('desenho9_publicacoes.jpg', 'um retrato', 'pessoas');
+INSERT INTO Desenho (url, nome_artista, descricao, categoria) VALUES
+('desenho1_publicacoes.jpg', 'Bianca', 'uma flor', 'plantas'),
+('desenho2_publicacoes.jpg', 'Bianca','um retrato', 'pessoas'),
+('desenho3_publicacoes.jpg', 'Hiro' ,'um retrato', 'pessoas'),
+('desenho4_publicacoes.jpg', null, 'um retrato', 'pessoas'),
+('desenho5_publicacoes.jpg', null,'uma flor', 'plantas'),
+('desenho6_publicacoes.jpg', null,'um retrato', 'pessoas'),
+('desenho7_publicacoes.jpg', null,'um retrato', 'pessoas'),
+('desenho8_publicacoes.jpg', null,'um retrato', 'pessoas'),
+('desenho9_publicacoes.jpg', 'AJ','um retrato', 'pessoas');
 
 TRUNCATE TABLE Desenho;
 

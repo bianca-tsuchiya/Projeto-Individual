@@ -106,28 +106,29 @@
                         `
 
                         spanArtista.innerHTML = `
-                            nome_artista
+                            ${publicacao.nome_artista}
                         `
 
                         imgVisualizacao.src = "./assets/visualizacao.png";
                         imgVisualizacao.width = 16;
-                        
+
                         imgCurtida.src = "./assets/coracao-vazio.png";
                         imgCurtida.id = "curtida";
                         imgCurtida.width = 16;
                         imgCurtida.setAttribute("onclick", "curtir()");
 
                         var contador = 0;
-                        imgCurtida.addEventListener("click", function(e) {
-                            contador+=1;
+                        imgCurtida.addEventListener("click", function (e) {
+                            contador += 1;
 
-                            if(contador % 2 == 0)
-                            {
+                            if (contador % 2 == 0) {
                                 e.target.src = "./assets/coracao-vazio.png"
                             }
-                            else{
+                            else {
                                 e.target.src = "./assets/coracao-rosa.png"
+
                             }
+
                         })
 
                         divContainerDesenho.className = "container-desenho"
