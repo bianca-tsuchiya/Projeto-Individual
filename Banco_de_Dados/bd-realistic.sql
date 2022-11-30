@@ -31,6 +31,8 @@ CREATE TABLE Desenho(
 );
 
 DROP TABLE Desenho;
+DROP TABLE Curtida;
+DROP TABLE Visualizacao;
 
 CREATE TABLE Curtida(
 	fkUsuario INT, FOREIGN KEY (fkUsuario) REFERENCES Usuario(idUsuario),
@@ -47,6 +49,11 @@ INSERT INTO Curtida (fkUsuario, fkDesenho, qtd_curtidas) VALUES
 
 SELECT * FROM Curtida;
 
+INSERT INTO Curtida (fkUsuario, fkDesenho, qtd_curtidas) VALUES
+(1, 0, 0);
+        
+UPDATE Curtida SET fkDesenho = 1, qtd_curtidas = (CASE WHEN qtd_curtidas = 0 THEN qtd_curtidas = 1
+ELSE qtd_curtidas = 0 END) WHERE fkUsuario = 2;
 
 SELECT c.qtd_curtidas, d.idDesenho, d.url, d.nome_artista, v.qtd_visualizacoes FROM Usuario as u
 JOIN Curtida as c
@@ -81,7 +88,7 @@ INSERT INTO Desenho (url, nome_artista, descricao, categoria) VALUES
 ('desenho8_publicacoes.jpg', null,'um retrato', 'pessoas'),
 ('desenho9_publicacoes.jpg', 'AJ','um retrato', 'pessoas');
 
-TRUNCATE TABLE Desenho;
+TRUNCATE TABLE Visualizacao;
 
 INSERT INTO Usuario (nome, sobrenome, username, data_nasc, email, senha) VALUES
 ('Fábio', 'Garcia', 'fabioGR', '2003-01-27', 'fabio.garcia@gmail.com', '123456');

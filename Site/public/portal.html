@@ -67,6 +67,73 @@
     b_usuario_nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_usuario_sobrenome.innerHTML = sessionStorage.SOBRENOME_USUARIO;
 
+
+    // function inserirCurtidaFalsa() {
+    //     var idUsuario = sessionStorage.ID_USUARIO;
+
+    //     fetch(`/avisos/publicar/${idUsuario}`, {
+    //         method: "post",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         },
+    //         body: JSON.stringify(corpo)
+    //     }).then(function (resposta) {
+    //         console.log("resposta: ", resposta);
+    //         if (resposta.ok) {
+    //             console.log("curtida falsa inserida")
+    //         } else if (resposta.status == 404) {
+    //             window.alert("Deu 404!");
+    //         } else {
+    //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.log(`#ERRO: ${resposta}`);
+    //         finalizarAguardar();
+    //     });
+    //     return false;
+    // }
+
+    function curtir(identificacao_desenho) {
+
+        alert(`${identificacao_desenho}`)
+
+        //     var idUsuario = sessionStorage.ID_USUARIO;
+
+        //     var curtida = 1;
+
+        //     fetch(`/avisos/publicar/${idUsuario}`, {
+        //         method: "post",
+        //         headers: {
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify(corpo)
+        //     }).then(function (resposta) {
+
+        //         console.log("resposta: ", resposta);
+
+        //         if (resposta.ok) {
+        //             window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+        //             window.location = "/dashboard/mural.html";
+        //             limparFormulario();
+        //             finalizarAguardar();
+        //         } else if (resposta.status == 404) {
+        //             window.alert("Deu 404!");
+        //         } else {
+        //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+        //         }
+        //     }).catch(function (resposta) {
+        //         console.log(`#ERRO: ${resposta}`);
+        //         finalizarAguardar();
+        //     });
+
+        //     return false;
+
+        // }
+
+        // function inserirCurtidaFalsa(){
+
+    }
+
     function obterDesenhos() {
         //aguardar();
         fetch("/desenho/listarDesenhos").then(function (resposta) {
@@ -101,6 +168,8 @@
                         var imgCurtida = document.createElement("img");
                         var imgVisualizacao = document.createElement("img");
 
+                        var identificacao_desenho = publicacao.idDesenho;
+
                         spanIMG.innerHTML = `
                             <figure><img src= "./assets/publicacoesDesenhos/${publicacao.url}"></figure>
                         `
@@ -115,7 +184,7 @@
                         imgCurtida.src = "./assets/coracao-vazio.png";
                         imgCurtida.id = "curtida";
                         imgCurtida.width = 16;
-                        imgCurtida.setAttribute("onclick", "curtir()");
+                        imgCurtida.setAttribute("onclick", `curtir(${identificacao_desenho})`);
 
                         var contador = 0;
                         imgCurtida.addEventListener("click", function (e) {
@@ -126,7 +195,6 @@
                             }
                             else {
                                 e.target.src = "./assets/coracao-rosa.png"
-
                             }
 
                         })

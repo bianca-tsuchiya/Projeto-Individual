@@ -18,6 +18,16 @@ function listarDesenhos() {
     return database.executar(instrucao);
 }
 
+function inserirCurtidaFalsa(titulo, descricao, idUsuario) {
+    console.log("ACESSEI O DESENHO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function publicar(): ", idUsuario);
+    var instrucao = `
+        INSERT INTO Curtida (fkUsuario, fkDesenho, qtd_curtidas) VALUES ('${idUsuario}', 0, 0);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
-    listarDesenhos
+    listarDesenhos,
+    inserirCurtidaFalsa
 }
