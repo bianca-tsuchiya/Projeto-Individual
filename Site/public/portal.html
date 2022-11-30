@@ -62,77 +62,13 @@
 </body>
 
 </html>
-
+ 
 <script>
+    var teste = 0
+    var spanContagemCurtidas = null
     b_usuario_nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_usuario_sobrenome.innerHTML = sessionStorage.SOBRENOME_USUARIO;
 
-
-    // function inserirCurtidaFalsa() {
-    //     var idUsuario = sessionStorage.ID_USUARIO;
-
-    //     fetch(`/avisos/publicar/${idUsuario}`, {
-    //         method: "post",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify(corpo)
-    //     }).then(function (resposta) {
-    //         console.log("resposta: ", resposta);
-    //         if (resposta.ok) {
-    //             console.log("curtida falsa inserida")
-    //         } else if (resposta.status == 404) {
-    //             window.alert("Deu 404!");
-    //         } else {
-    //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-    //         }
-    //     }).catch(function (resposta) {
-    //         console.log(`#ERRO: ${resposta}`);
-    //         finalizarAguardar();
-    //     });
-    //     return false;
-    // }
-
-    function curtir(identificacao_desenho) {
-
-        alert(`${identificacao_desenho}`)
-
-        //     var idUsuario = sessionStorage.ID_USUARIO;
-
-        //     var curtida = 1;
-
-        //     fetch(`/avisos/publicar/${idUsuario}`, {
-        //         method: "post",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify(corpo)
-        //     }).then(function (resposta) {
-
-        //         console.log("resposta: ", resposta);
-
-        //         if (resposta.ok) {
-        //             window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
-        //             window.location = "/dashboard/mural.html";
-        //             limparFormulario();
-        //             finalizarAguardar();
-        //         } else if (resposta.status == 404) {
-        //             window.alert("Deu 404!");
-        //         } else {
-        //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-        //         }
-        //     }).catch(function (resposta) {
-        //         console.log(`#ERRO: ${resposta}`);
-        //         finalizarAguardar();
-        //     });
-
-        //     return false;
-
-        // }
-
-        // function inserirCurtidaFalsa(){
-
-    }
 
     function obterDesenhos() {
         //aguardar();
@@ -167,6 +103,10 @@
                         var spanVisualizacao = document.createElement("span");
                         var imgCurtida = document.createElement("img");
                         var imgVisualizacao = document.createElement("img");
+                         spanContagemCurtidas = document.createElement("span")
+
+                    
+                        
 
                         var identificacao_desenho = publicacao.idDesenho;
 
@@ -177,6 +117,7 @@
                         spanArtista.innerHTML = `
                             ${publicacao.nome_artista}
                         `
+                        spanContagemCurtidas.innerHTML = teste ;
 
                         imgVisualizacao.src = "./assets/visualizacao.png";
                         imgVisualizacao.width = 16;
@@ -185,7 +126,7 @@
                         imgCurtida.id = "curtida";
                         imgCurtida.width = 16;
                         imgCurtida.setAttribute("onclick", `curtir(${identificacao_desenho})`);
-
+                        0
                         var contador = 0;
                         imgCurtida.addEventListener("click", function (e) {
                             contador += 1;
@@ -213,6 +154,7 @@
                         divContainerDesenho.appendChild(spanIMG);
                         divInfoDesenho.appendChild(spanCurtida);
                         spanCurtida.appendChild(imgCurtida);
+                        spanCurtida.appendChild(spanContagemCurtidas)
                         spanVisualizacao.appendChild(imgVisualizacao);
                         mural_explorar.appendChild(divContainerDesenho);
                     }
@@ -223,6 +165,50 @@
         }).catch(function (resposta) {
             console.error(resposta);
         });
+        
+    }
+    
+    function curtir(identificacao_desenho) {
+        
+        console.log(spanContagemCurtidas);
+        alert(`${identificacao_desenho}`)
+
+        spanContagemCurtidas = teste+1
+
+        var idUsuario = sessionStorage.IDUSUARIO_USUARIO;
+
+        fetch(`/desenho/curtir/${idUsuario}${identificacao_desenho}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            // body: JSON.stringify(
+            //     {
+            //         qtdCurtidas: qtd_curtidas
+            //     }
+            // )
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            // Session Storage criada no login e referenciada qtd_curtidas = 1 if para manter imagem
+            // Passar pk e fk como parâmetro e o restante como objeto
+            //parametro na rota :parametro1 :parametro2
+            // if qtd_curtidas = 1 então pinta
+
+            if (resposta.ok) {
+                console.log("curtido")
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        return false;
+
     }
 
 

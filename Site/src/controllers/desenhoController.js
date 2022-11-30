@@ -16,12 +16,14 @@ function listarDesenhos(req, res) {
     });
 }
 
-function inserirCurtidaFalsa(req, res) {
+function curtir(req, res) {
     var idUsuario = req.params.idUsuario;
+    var identificacao_desenho = req.params.identificacao_desenho;
+  console.log("chegou?")
     if (idUsuario == undefined) {
         res.status(400).send("O idUsuario está indefinido!");
     } else {
-        desenhoModel.inserirCurtidaFalsa(idUsuario)
+        desenhoModel.curtir(idUsuario, identificacao_desenho) //Permissão para utilizar a variável
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -38,5 +40,5 @@ function inserirCurtidaFalsa(req, res) {
 }
 module.exports = {
     listarDesenhos,
-    inserirCurtidaFalsa
+    curtir
 }

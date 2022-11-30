@@ -7,8 +7,8 @@ router.get("/listarDesenhos", function (req, res) {
     desenhoController.listarDesenhos(req, res);
 });
 
-router.post("/inserirCurtidaFalsa:idUsuario", function (req, res) {
-    desenhoController.inserirCurtidaFalsa(req, res);
+router.post("/curtir/:idUsuario:identificacao_desenho", function (req, res) {
+    desenhoController.curtir(req, res);
 });
 
 module.exports = router;
