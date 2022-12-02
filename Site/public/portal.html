@@ -17,14 +17,7 @@
             <div class="logo-realistic">
                 <img src="./assets/logo_realistic.png" alt="">
             </div>
-            <div class="barra-pesquisa-portal">
-                <label for="input_pesquisa">
-                    <img src="./assets/lupa-barra-pesquisa-portal.png" alt="" class="img-lupa">
-                </label>
-                <input type="text" class="input-barra-pesquisa" id="input_pesquisa">
-            </div>
             <div class="btn-config-sair">
-                <a href="#" class="btn-config">Configurações</a>
                 <a href="#" class="btn-sair" onclick="limparSessao()">Sair</a>
             </div>
         </div>
@@ -33,10 +26,9 @@
     <main>
         <nav>
             <ul>
-                <li><a href="#" class="agora">Explore</a></li>
-                <li><a href="#">Popular</a></li>
-                <li><a href="#">Inspiração</a></li>
-                <li><a href="#">Aprenda</a></li>
+                <li><a href="./portal.html" class="agora">Explore</a></li>
+                <li><a href="./aprenda.html">Aprenda</a></li>
+                <li><a href="./chamativo_quiz.html">Quiz</a></li>
             </ul>
         </nav>
         <div class="titulo-portal-explore">
@@ -46,14 +38,6 @@
         </div>
         <div class="container-mural-desenhos-explorar">
             <div class="mural-desenhos-explorar" id="mural_desenhos_explorar">
-                <!-- <div>
-                <span><img src="" alt=""></span>
-                <div>
-                    <span>Artista</span>
-                    <span><img src="./assets/coracao-vazio.png" onclick="curtir()">numero</span>
-                    <span><img src="">numero</span>
-                </div>
-            </div> -->
             </div>
         </div>
     </main>
@@ -64,8 +48,6 @@
 </html>
  
 <script>
-    var teste = 0
-    var spanContagemCurtidas = null
     b_usuario_nome.innerHTML = sessionStorage.NOME_USUARIO;
     b_usuario_sobrenome.innerHTML = sessionStorage.SOBRENOME_USUARIO;
 
@@ -99,63 +81,23 @@
                         var spanIMG = document.createElement("span");
                         var divInfoDesenho = document.createElement("div");
                         var spanArtista = document.createElement("span");
-                        var spanCurtida = document.createElement("span");
-                        var spanVisualizacao = document.createElement("span");
-                        var imgCurtida = document.createElement("img");
-                        var imgVisualizacao = document.createElement("img");
-                         spanContagemCurtidas = document.createElement("span")
-
-                    
-                        
-
-                        var identificacao_desenho = publicacao.idDesenho;
-
+            
                         spanIMG.innerHTML = `
                             <figure><img src= "./assets/publicacoesDesenhos/${publicacao.url}"></figure>
                         `
 
                         spanArtista.innerHTML = `
-                            ${publicacao.nome_artista}
+                           ${publicacao.artista}
                         `
-                        spanContagemCurtidas.innerHTML = teste ;
-
-                        imgVisualizacao.src = "./assets/visualizacao.png";
-                        imgVisualizacao.width = 16;
-
-                        imgCurtida.src = "./assets/coracao-vazio.png";
-                        imgCurtida.id = "curtida";
-                        imgCurtida.width = 16;
-                        imgCurtida.setAttribute("onclick", `curtir(${identificacao_desenho})`);
-                        0
-                        var contador = 0;
-                        imgCurtida.addEventListener("click", function (e) {
-                            contador += 1;
-
-                            if (contador % 2 == 0) {
-                                e.target.src = "./assets/coracao-vazio.png"
-                            }
-                            else {
-                                e.target.src = "./assets/coracao-rosa.png"
-                            }
-
-                        })
 
                         divContainerDesenho.className = "container-desenho"
                         spanIMG.className = "imgs-mural-explorar";
                         divInfoDesenho.className = "info-desenho";
                         spanArtista.className = "info-desenho-artista";
-                        spanCurtida.className = "info-desenho-curtida";
-                        spanVisualizacao.className = "info-desenho-visualizacao";
-                        imgCurtida.className = "img-curtida";
 
                         divInfoDesenho.appendChild(spanArtista);
-                        divInfoDesenho.appendChild(spanVisualizacao);
                         divContainerDesenho.appendChild(divInfoDesenho);
                         divContainerDesenho.appendChild(spanIMG);
-                        divInfoDesenho.appendChild(spanCurtida);
-                        spanCurtida.appendChild(imgCurtida);
-                        spanCurtida.appendChild(spanContagemCurtidas)
-                        spanVisualizacao.appendChild(imgVisualizacao);
                         mural_explorar.appendChild(divContainerDesenho);
                     }
                 });
@@ -167,51 +109,4 @@
         });
         
     }
-    
-    function curtir(identificacao_desenho) {
-        
-        console.log(spanContagemCurtidas);
-        alert(`${identificacao_desenho}`)
-
-        spanContagemCurtidas = teste+1
-
-        var idUsuario = sessionStorage.IDUSUARIO_USUARIO;
-
-        fetch(`/desenho/curtir/${idUsuario}${identificacao_desenho}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            // body: JSON.stringify(
-            //     {
-            //         qtdCurtidas: qtd_curtidas
-            //     }
-            // )
-        }).then(function (resposta) {
-
-            console.log("resposta: ", resposta);
-
-            // Session Storage criada no login e referenciada qtd_curtidas = 1 if para manter imagem
-            // Passar pk e fk como parâmetro e o restante como objeto
-            //parametro na rota :parametro1 :parametro2
-            // if qtd_curtidas = 1 então pinta
-
-            if (resposta.ok) {
-                console.log("curtido")
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-        return false;
-
-    }
-
-
-
-
 </script>

@@ -6,6 +6,10 @@ font-family: 'Montserrat', sans-serif;
 */
 
 /* CSS Geral */
+html{
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -16,6 +20,8 @@ body {
     font-family: 'Dosis', sans-serif;
     color: #141414;
 }
+
+
 
 
 /* header -> nav-bar */

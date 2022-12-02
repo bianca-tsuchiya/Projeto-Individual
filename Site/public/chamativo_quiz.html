@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/funcoes.js"></script>
+    <link rel="stylesheet" href="./css/chamativo_quiz.css">
+    <title>Document</title>
+</head>
+
+<body onload="listarRanking()">
+    <header>
+        <div class="header-portal">
+            <div class="logo-realistic">
+                <img src="./assets/logo_realistic.png" alt="">
+            </div>
+            <div class="btn-config-sair">
+                <a href="#" class="btn-sair" onclick="limparSessao()">Sair</a>
+            </div>
+        </div>
+        <div class="linha-header"></div>
+    </header>
+    <main>
+        <nav>
+            <ul>
+                <li><a href="./portal.html">Explore</a></li>
+                <li><a href="./aprenda.html">Aprenda</a></li>
+                <li><a href="./chamativo_quiz.html" class="agora">Quiz</a></li>
+            </ul>
+        </nav>
+    </main>
+    <p class="texto-ranking">RANKING</p>
+    <section class="info-quiz">
+        <div class="ranking-principal">
+            <div class="elementos-ranking" id="elementos_ranking">
+            </div>
+            <div class="ranking" id="ranking">
+            </div>
+        </div>
+
+        <div class="btn-jogar">
+            <img src="./assets/ranking.png" alt="">
+            <p>Jogue agora o quiz e entre para o Ranking!</p>
+            <button onclick="jogar()">Jogar</button>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
+
+<script>
+    function jogar() {
+        window.location = './quiz.html';
+    }
+
+    function listarRanking() {
+        //aguardar();
+        fetch("/ranking/listarRanking").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var ranking = document.getElementById("ranking");
+
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+
+                    mural_explorar.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var ranking = document.getElementById("ranking");
+
+                    var elementosRanking = document.getElementById("elementos_ranking")
+
+                    var textoSpanPosicao = document.createElement("span");
+                    var textoSpanUsername = document.createElement("span");
+                    var textoSpanPontos = document.createElement("span");
+
+                    textoSpanPosicao.innerHTML = `
+                            Posição
+                        `
+                    textoSpanUsername.innerHTML = `
+                            Username
+                        `
+                    textoSpanPontos.innerHTML = `
+                            Pontuação
+                        `
+
+                    ranking.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+
+                        var spanPosicao = document.createElement("span");
+                        var spanUsername = document.createElement("span");
+                        var spanPontos = document.createElement("span");
+
+                        spanPosicao.innerHTML = `
+                            #0${i + 1}
+                        `
+                        spanUsername.innerHTML = `
+                            ${publicacao.username}
+                        `
+                        spanPontos.innerHTML = `
+                            ${publicacao.pontos}
+                        `
+
+                        spanPosicao.className = "posicao-ranking";
+                        spanUsername.className = "username-ranking";
+                        spanPontos.className = "pontos-ranking";
+
+                        elementosRanking.appendChild(textoSpanPosicao);
+                        elementosRanking.appendChild(textoSpanUsername);
+                        elementosRanking.appendChild(textoSpanPontos);
+                        ranking.appendChild(spanPosicao);
+                        ranking.appendChild(spanUsername);
+                        ranking.appendChild(spanPontos);
+
+                    }
+                });
+            } else {
+                throw ('Houve um erro!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+        });
+
+    }
+</script>
